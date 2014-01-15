@@ -21,9 +21,6 @@ namespace PortableNotepad
         {
             _fileStorage = fileStorage;
 
-            SaveCommand = new SimpleCommand(Save);
-            LoadCommand = new SimpleCommand(Load);
-
             Filename = "test.txt";
             Contents = "Hello, World!";
         }
@@ -42,12 +39,21 @@ namespace PortableNotepad
             set { SetProperty(ref _contents, value); }
         }
 
-        public ICommand SaveCommand { get; private set; }
-        public ICommand LoadCommand { get; private set; }
-
-        void Save()
+        SimpleCommand _saveCommand;
+        public ICommand SaveCommand
         {
-            _fileStorage.SaveFileAsync(Filename, Contents);
+            get { return _saveCommand ?? (_saveCommand = new SimpleCommand(Save)); }
+        }
+
+        SimpleCommand _loadCommand;
+        public ICommand LoadCommand
+        {
+            get { return _loadCommand ?? (_loadCommand = new SimpleCommand(Load)); }
+        }
+
+        async void Save()
+        {
+            await _fileStorage.SaveFileAsync(Filename, Contents);
         }
 
         async void Load()
