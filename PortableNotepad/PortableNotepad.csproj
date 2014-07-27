@@ -44,6 +44,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IFileStorage.cs" />
     <Compile Include="MVVMInfrastructure.cs" />
     <Compile Include="NotepadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

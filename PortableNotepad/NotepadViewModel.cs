@@ -7,12 +7,6 @@ using System.Windows.Input;
 
 namespace PortableNotepad
 {
-    public interface IFileStorage
-    {
-        Task SaveFileAsync(string filename, string contents);
-        Task<String> LoadFileAsync(string filename);
-    }
-
     public class NotepadViewModel : NotifyPropertyChangedBase
     {
         IFileStorage _fileStorage;

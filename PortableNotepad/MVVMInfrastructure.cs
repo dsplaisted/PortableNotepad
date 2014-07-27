@@ -21,8 +21,9 @@ namespace PortableNotepad
         {
             return true;
         }
-
+#pragma warning disable 67
         public event EventHandler CanExecuteChanged;
+#pragma warning restore 67
 
         public void Execute(object parameter)
         {
